@@ -110,12 +110,15 @@ int main(void)
   {
     Error_Handler();
   }
-
-char my_buf[8] = "hello\r\n";	
+int a = 3;
+	int b = 4;
+	int lhs = (a+b)*(a+b);
+	int rhs = a*a + 2*a*b + b*b;
+char my_buf[50];	
 	while (1)
   {
-  
-		HAL_UART_Transmit(&UartHandle, (uint8_t*)my_buf, 8, 5000);
+		int length = sprintf(my_buf, "lhs = %d, rhs = %d\n", lhs, rhs);
+		HAL_UART_Transmit(&UartHandle, (uint8_t*)my_buf, length, 5000);
 		//printf("Hello World!\n");
 		HAL_Delay(250);
   }
