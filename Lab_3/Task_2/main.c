@@ -201,7 +201,6 @@ int main(void)
 
   while (1)
   {
-		  ind = (ind+1)%6;
   }
 }
 
@@ -298,7 +297,8 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 	if(GPIO_Pin == USER_BUTTON_PIN)
   {
 		for(i=0; i<0x7FFFF; i++);
-		displayDigit(rand()%6+1);
+	  	ind = (ind+1)%5;
+		displayDigit(num[ind]);
   }
 }
 #ifdef  USE_FULL_ASSERT
