@@ -189,7 +189,7 @@ int main(void)
 	
 	GPIO_InitStruct.Pin = (GPIO_PIN_1);
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Pull = GPIO_PULLDOWN;
 	HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
   
   /* Initialize LEDs mounted on DK board */
@@ -206,14 +206,18 @@ int main(void)
 
   while (1)
   {
-		  if(HAL_GPIO_ReadPin (GPIOB, GPIO_PIN_1))
+		if(HAL_GPIO_ReadPin (GPIOB, GPIO_PIN_1))
 			{
 				ind = ind - 1;
 				if (ind == -1)
 					ind = 15;
 				displayDigit(ind);
 			}
-	}
+		for(i=0; i<0x7FFFF; i++)
+		;
+			for(i=0; i<0x7FFFF; i++)
+		;
+  }
 }
 
 /**
@@ -308,7 +312,9 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
 	if(GPIO_Pin == USER_BUTTON_PIN)
   {
-		ind = (ind + 1)%16;
+		for(i=0; i<0x7FFFF; i++)
+		;
+	  	ind = (ind+1)%16;
 		displayDigit(ind);
   }
 }
