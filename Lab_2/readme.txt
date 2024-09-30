@@ -1,3 +1,3 @@
-This lab teaches you how to print debug statements using UART. 
+This lab teaches you how to print debug statements using UART. The tasks do not use printf, and rely on buffers, which practically perform the same function. Task 1 is simply to prove the famous identity: (a+b)^2 = a^2 + 2ab + b^2, and output the results using a printf statement. Task 2 is to encrypt a string using a key (a student ID) and then decrypting it back. Task 3 refreshes the concept of loops in C using matrix multiplication. Task 4 asks to find at least 2 Armstrong numbers within the range of 100 and 999 inclusive.
 Before doing any of the tasks, replace the main.h and the stm32f3xx_hal_msp.c files with the ones in this folder.
 After that, just replace main.c for each task and you're done.
