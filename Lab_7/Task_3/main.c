@@ -167,11 +167,13 @@ int main(void)
 char my_buf[100];	
 	while (1)
   {
-		int length = sprintf(my_buf, "Value: %d\r\n", uhADCxConvertedValue/256 );
+		int length = sprintf(my_buf, "ADC: %d\r\n", uhADCxConvertedValue );
+		HAL_UART_Transmit(&UartHandle, (uint8_t*)my_buf, length, 5000);
+    length = sprintf(my_buf, "Voltage: %f\r\n", (float)uhADCxConvertedValue/4096*3.3 );
 		HAL_UART_Transmit(&UartHandle, (uint8_t*)my_buf, length, 5000);
 		//printf("Hello World!\n");
-		PULSE_VALUE = uhADCxConvertedValue/256;
-		sConfig.Pulse = PERIOD_VALUE * PULSE_VALUE/16;
+		PULSE_VALUE = uhADCxConvertedValue;
+		sConfig.Pulse = PERIOD_VALUE * PULSE_VALUE/4096;
 		if (HAL_TIM_PWM_ConfigChannel(&TimHandle, &sConfig, TIM_CHANNEL_1) != HAL_OK)
 		{
 			/* Configuration Error */
